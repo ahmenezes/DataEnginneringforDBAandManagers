@@ -181,3 +181,14 @@ tips[tips['time'] == 'Dinner'].sort_values('tip', ascending = True).head(10)
 ```
 
 suddenly it started to get a bit easier
+
+```sql
+select sex, smoker, count(1) cenas from tips 
+where smoker in ('No','Yes')
+group by sex, smoker
+```
+
+The Pandas equivalent version is 
+```python
+tips[tips['smoker'].isin(['No','Yes'])].groupby(['sex', 'smoker']).size()
+```
