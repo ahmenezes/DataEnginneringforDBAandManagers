@@ -1,7 +1,10 @@
 # Data Engineering for DBAs and Managers
-If you're in a situation where you want to make take risks and make a a career move to data engineering and you have experience as DBA or technical management like me. 
-This information can be useful because I will be sharing my latest experiences (good and bad).. hoping this will ease your mind and your life 
+If you're in a situation where you want to take risks and make a career move to data engineering having previous experience as DBA or technical manager. 
 
-Learning Pandas
+I will be sharing my latest experiences (good and bad).. 
 
-[My first steps with Pandas](pandas_useful_snippets.md)
+Hope this will ease your mind and your life.
+
+#### Learning Pandas
+
+* [My first steps with Pandas](pandas_useful_snippets.md)
