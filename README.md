@@ -4,4 +4,4 @@ This information can be useful because I will be sharing my latest experiences (
 
 Learning Pandas
 
-[My first steps with Pandas](usefulPandasSnipets.md)
+[My first steps with Pandas](pandas_useful_snippets.md)
