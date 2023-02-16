@@ -2,7 +2,7 @@
 
 This is a set of survival snippets to start with Python Pandas
 
-First of all some useful links
+First of all, some useful links:
 
     Interesting snippets sources
         https://allthesnippets.com/search
@@ -40,6 +40,32 @@ First of all some useful links
     colnames = list(df.columns)
     print(colnames,"\n")
 
+# Statistics - Describing Numerical Data
+the built in function called `.describe()` which will provide some descriptive statistics for all the numerical columns in a dataframe.
+
+    df.describe()
+
+# Statistics - Describing Text (or Categorical) Data
+We can still use `describe()` to look at text data, however we need to specify that we're looking at object (text) data types.
+
+Really, the descriptive statistics below are for categorical data, they don't work very well if every value in a field is a different piece of text!
+
+    df.describe(include=['O'])
+
+# Statistics - Count 
+count() can be defined for all datatypes, so all columns are computed. Note which columns have some missing data.
+    
+    df.count()
+
+# Statistics - Minimum & Max value
+    
+    # min() and max() has a definition for numeric and text data.
+    # The minimum value of a text field is the text which is first alphabetically.
+    df.min()
+
+    # The maximum value of a text field is the text which is last alphabetically.
+    df.max() 
+
 # Use tabulate to show sample data 
     from tabulate import tabulate
     print(tabulate(df.head(), headers='keys'))
@@ -62,7 +88,14 @@ works in a very similar way to selecting columns. Simple filtering can be achiev
 
     # 1 row
     df[123:124]
-    
+
+
+### Export Data Using pandas
+
+Pandas can export DataFrame or Series objects to a range of different data formats, they are all prefixed with `.to`.
+
+    df.to_excel('../Save/output_file.xlsx')
+
 
 ## Conditional Filtering
 
@@ -192,3 +225,48 @@ The Pandas equivalent version is
 ```python
 tips[tips['smoker'].isin(['No','Yes'])].groupby(['sex', 'smoker']).size()
 ```
+
+
+# Working with null values
+```python
+tips[tips['smoker'].isnull()]
+```
+
+# Number of non-null count and datatype of each column
+```python
+df.info()
+```
+
+# Duplicated values
+```python
+# One way we could check for other name duplicates is by taking the mode.
+# As mode can be non-unique it returns a series
+tips['name'].mode()
+```
+
+
+# Create a new binary variable 
+```python
+# called 'child', it should have the value 1 when age is under 18 and 0 otherwise.
+
+df['child'] = (df['age'] < 18).astype(int)
+print(df['child'].head(),'\n')
+```
+
+```python
+# Create a new variable called 'embarked_city', map 'S' to 'Southampton', 'C' to 'Cherbourg', and 'Q' to 'Queenstown'.
+
+df['embarked_city'] = df['embarked'].map({'S':'Southampton','C':'Cherbourg','Q':'Queenstown'})
+print(df['embarked_city'].sample(5),'\n')
+```
+
+```python
+# Create a new variable called 'surname', the value should be the surname part of the 'name' field.
+    # Use `df['name'].str.split(',',expand=True)[0]` to get surnames.
+    # Explore this code and make sure you understand what's going on.
+    # How many unique surnames are there (hint: try `.unique()` or `.nunique()` on the new column.
+    # 
+
+df['surname'] = titanic['name'].str.split(',',expand=True)[0]
+print("The number of unique surnames in the dataset is {}".format(df['surname'].nunique()))
+

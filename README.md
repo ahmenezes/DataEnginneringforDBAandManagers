@@ -5,6 +5,9 @@ I will be sharing my latest experiences (good and bad)..
 
 Hope this will ease your mind and your life.
 
-#### Learning Pandas
+#### Learning Python
+* [My first steps with Python](python_useful_snippets.md)
 
+
+#### Learning Pandas
 * [My first steps with Pandas](pandas_useful_snippets.md)
