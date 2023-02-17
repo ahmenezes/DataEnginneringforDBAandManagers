@@ -260,13 +260,11 @@ df['embarked_city'] = df['embarked'].map({'S':'Southampton','C':'Cherbourg','Q':
 print(df['embarked_city'].sample(5),'\n')
 ```
 
+# Change Columns order 
 ```python
-# Create a new variable called 'surname', the value should be the surname part of the 'name' field.
-    # Use `df['name'].str.split(',',expand=True)[0]` to get surnames.
-    # Explore this code and make sure you understand what's going on.
-    # How many unique surnames are there (hint: try `.unique()` or `.nunique()` on the new column.
-    # 
+columns_reordered = ['ProdID', 'SetName', 'ProdDesc', 'ProdLongDesc', 'ThemeName',
+                     'Country', 'Ages', 'ReviewDifficulty', 'NumReviews', 'ListPrice',
+                     'WeightGrs', 'PieceCount', 'ValStarRating', 'LaunchDate']
 
-df['surname'] = titanic['name'].str.split(',',expand=True)[0]
-print("The number of unique surnames in the dataset is {}".format(df['surname'].nunique()))
-
+lego_cleaned_data = lego_cleaned_data[columns_reordered]
+```
