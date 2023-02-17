@@ -244,6 +244,11 @@ df.info()
 tips['name'].mode()
 ```
 
+# Unique / distinct values
+```python
+unique_countries = list(df['Country'].unique())
+```
+
 
 # Create a new binary variable 
 ```python
