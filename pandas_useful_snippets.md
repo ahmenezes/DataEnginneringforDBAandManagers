@@ -273,3 +273,11 @@ columns_reordered = ['ProdID', 'SetName', 'ProdDesc', 'ProdLongDesc', 'ThemeName
 
 lego_cleaned_data = lego_cleaned_data[columns_reordered]
 ```
+
+# Replace / update values
+```python
+df_cleaned['Country'].replace({'Austria':'AU',
+                               'Dn':'DN',
+                               'CH ':'CH'},
+                              inplace = True)
+```
