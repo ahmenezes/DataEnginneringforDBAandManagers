@@ -39,3 +39,11 @@ for column_name in lego_cleaned_data.columns:
 ```python
     new_columns_list = [column_name.title().replace(' ', '_').replace('Id', 'ID').replace('date', 'Date').replace('name', 'Name').replace('_', '') for column_name in lego_cleaned_data.columns]
 ```
+
+# Replace / update values from a list
+```python
+df_cleaned['Country'].replace({'Austria':'AU',
+                               'Dn':'DN',
+                               'CH ':'CH'},
+                              inplace = True)
+```
