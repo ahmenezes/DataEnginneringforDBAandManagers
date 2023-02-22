@@ -281,3 +281,22 @@ lego_cleaned_data = lego_cleaned_data[columns_reordered]
 # `loc` operation -> Access a group of rows and columns by label(s) or a boolean array.
 number_of_null_themes = len(lego_cleaned_data.loc[lego_cleaned_data['ThemeName'].isna()])
 ```
+# Count, group by and sort by column
+
+```jql
+# the equivalent operation using SQL 
+
+SELECT 'ProdID', 'SetName', count(1) as CountProdIdSetName
+FROM lego_cleaned_data
+GROUP BY 'ProdID', 'SetName'
+ORDER BY CountProdIdSetName DESC
+```
+
+```python
+print(lego_cleaned_data.groupby(['ProdID', 'SetName']).size().reset_index(name='CountProdIdSetName').sort_values(['CountProdIdSetName'], ascending=False) )
+```
+
+```python
+# if we want to return the five largest values we can use nlargest operation
+print(lego_cleaned_data.groupby(['ProdID', 'SetName']).size().nlargest(5))
+```
