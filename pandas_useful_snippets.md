@@ -275,3 +275,9 @@ lego_cleaned_data = lego_cleaned_data[columns_reordered]
 ```
 
 
+# Count the number of entries that have a `'NaN'` entry in the `'ThemeName'` column.
+```python
+# `.isna()` ->Detects missing values. Returns a boolean same-sized object indicating if the values are NA.
+# `loc` operation -> Access a group of rows and columns by label(s) or a boolean array.
+number_of_null_themes = len(lego_cleaned_data.loc[lego_cleaned_data['ThemeName'].isna()])
+```
