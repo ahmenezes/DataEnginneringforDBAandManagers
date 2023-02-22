@@ -35,7 +35,7 @@ for column_name in lego_cleaned_data.columns:
 ```
 
 
-# Using inline `for` with lists 
+# Using inline `for` with lists
 ```python
     new_columns_list = [column_name.title().replace(' ', '_').replace('Id', 'ID').replace('date', 'Date').replace('name', 'Name').replace('_', '') for column_name in lego_cleaned_data.columns]
 ```
@@ -46,4 +46,11 @@ df_cleaned['Country'].replace({'Austria':'AU',
                                'Dn':'DN',
                                'CH ':'CH'},
                               inplace = True)
+```
+
+# Count the number of entries that have a `'NaN'` entry in the `'ThemeName'` column.
+```python
+# `.isna()` ->Detects missing values. Returns a boolean same-sized object indicating if the values are NA.
+# `loc` operation -> Access a group of rows and columns by label(s) or a boolean array.
+number_of_null_themes = len(lego_cleaned_data.loc[lego_cleaned_data['ThemeName'].isna()])
 ```
